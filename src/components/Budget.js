@@ -8,4 +8,6 @@ const Budget = () => {
         </div>
     );
 };
+//Here, you are using the Bootstrap Alert classes to give a nice gray background 
+//by adding some text and hard coding a value.
 export default Budget;
