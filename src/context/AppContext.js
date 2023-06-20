@@ -78,7 +78,7 @@ export const AppReducer = (state, action) => {
 
 // 1. Sets the initial state when the app loads
 const initialState = {
-    budget: 2000,
+    budget: 2000,  // adding an initial budget
     expenses: [
         { id: "Marketing", name: 'Marketing', cost: 50 },
         { id: "Finance", name: 'Finance', cost: 300 },
@@ -94,9 +94,11 @@ export const AppContext = createContext();
 
 // 3. Provider component - wraps the components we want to give access to the state
 // Accepts the children, which are the nested(wrapped) components
-export const AppProvider = (props) => {
+export const AppProvider = (props) => { //creating a Provider component
     // 4. Sets up the app state. takes a reducer, and an initial state
     const [state, dispatch] = useReducer(AppReducer, initialState);
+    //setting up the useReducer hook which will hold your state, 
+    //and allow you to update the state via dispatch.
     let remaining = 0;
 
     if (state.expenses) {
