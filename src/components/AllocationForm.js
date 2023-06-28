@@ -52,12 +52,19 @@ const AllocationForm = (props) => {
                   </select>
                     <input
                         required='required'
-                        type='number'
+                        type='text'
                         id='cost'
                         value={cost}
                         style={{ marginLeft: '2rem' , size: 10}}
-                        onChange={(event) => setCost(event.target.value)}>
-                        </input>
+                        onChange={(event) => {
+                            const inputValue = event.target.value;
+                            const isValidNumber = /^\d*\.?\d*$/.test(inputValue); // Regular expression to validate numeric input
+                        
+                            if (isValidNumber) {
+                              setCost(inputValue);
+                            }
+                          }} 
+                          pattern="\d*\.?\d*" />
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
                     </button>
