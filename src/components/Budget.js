@@ -8,7 +8,12 @@ const Budget = () => {
       const newValue = parseInt(event.target.value);
     
       if (newValue > inputValue) {
-        setInputValue(newValue+9);
+        if (newValue>20000) {
+
+          alert("Value cannot exceed 20000")
+          
+        }else{
+          setInputValue(newValue+9);
             
         const increment = {
           amount: 10,
@@ -19,7 +24,9 @@ const Budget = () => {
           //(so the reducer knows how to update the state) and the payload.
           type: 'SET_BUDGET',
           payload: increment,
-      });
+        });
+
+        }
 
       } else if (newValue < inputValue) {
         setInputValue(newValue-9);
