@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 const AllocationForm = (props) => {
-    const { dispatch,remaining  } = useContext(AppContext);
+    const { dispatch,remaining,currency  } = useContext(AppContext);
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
@@ -27,6 +27,10 @@ const AllocationForm = (props) => {
                 });
             }
     };
+    const inlineStyles = {
+        fontSize: '22px',
+        padding: '0px 0px 0px 20px',
+      };
     return (
         <div>
             <div className='row'>
@@ -50,12 +54,13 @@ const AllocationForm = (props) => {
                         <option defaultValue value="Add" name="Add">Add</option>
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
+                    <label style={inlineStyles}>{currency}</label>
                     <input
                         required='required'
                         type='text'
                         id='cost'
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{size: 10}}
                         onChange={(event) => {
                             const inputValue = event.target.value;
                             const isValidNumber = /^\d*\.?\d*$/.test(inputValue); // Regular expression to validate numeric input
